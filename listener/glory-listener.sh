@@ -1,11 +1,11 @@
 #!/bin/bash
 
 PORT="5000" # Port du listener glorytun (5000 par défaut)
-KEYFILE="/gt.key" # Chemin vers le fichier de clé partagée (doit être le même que celui utilisé par le host)
+KEYFILE="./gt.key" # Chemin vers le fichier de clé partagée (doit être le même que celui utilisé par le host)
 IP_ADDRESS="10.0.0.1/24" # Adresse IP local TUN du listener glorytun
 TUN_INTERFACE="tun0" # Nom de l'interface TUN
-PUBLIC_INTERFACE="eno1" # Nom de l'interface publique
-PUBLIC_IP="188.165.221.166" # Adresse IP publique
+PUBLIC_INTERFACE="ens3" # Nom de l'interface publique
+PUBLIC_IP="51.68.92.34" # Adresse IP publique
 
 while true; do
     echo "Démarrage de Glorytun listener..."

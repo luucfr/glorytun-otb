@@ -6,7 +6,7 @@
 GLORYTUN_VERSION="v0.0.35"
 GLORYTUN_BIN_URL="https://github.com/angt/glorytun/releases/download/$GLORYTUN_VERSION/glorytun-0.0.35-x86_64.bin"
 GLORYTUN_BIN_PATH="/bin/glorytun"
-KEYFILE_PATH="/etc/glorytun/gt.key"
+KEYFILE_PATH="gt.key"
 
 # Fonction pour afficher un message d'erreur et quitter
 function error_exit {
@@ -30,18 +30,6 @@ curl -L -o /tmp/glorytun.bin $GLORYTUN_BIN_URL || error_exit "Échec du téléch
 echo "Déplacement du binaire et attribution des permissions..."
 mv /tmp/glorytun.bin $GLORYTUN_BIN_PATH || error_exit "Échec du déplacement du binaire."
 chmod +x $GLORYTUN_BIN_PATH || error_exit "Échec de l'attribution des permissions au binaire."
-
-# Créer le répertoire pour la clé si nécessaire
-echo "Création du répertoire pour la clé..."
-mkdir -p $(dirname $KEYFILE_PATH)
-
-# Générer la clé de Glorytun
-echo "Génération de la clé Glorytun..."
-glorytun genkey > $KEYFILE_PATH || error_exit "Échec de la génération de la clé."
-
-# Afficher la clé générée
-echo "Clé générée :"
-cat $KEYFILE_PATH
 
 # Finalisation
 echo "Installation de Glorytun terminée. Le binaire est installé sous $GLORYTUN_BIN_PATH."
